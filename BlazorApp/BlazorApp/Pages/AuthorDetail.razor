@@ -2,16 +2,37 @@
 @page "/authors/authordetail/{authorId}"
 @* @page "/authors/authordetail/{authorId:int}"*@
 @page "/authordetails"
+@inject IAuthorService authorService
+@using BlazorApp.Data
 
 
 <h3>AuthorDetail</h3>
 <hr />
 
+<div class="col-12 row">
+	<h5 class="col-12 row" style="font-weight:bold">@AuthorDetails.FirstName @AuthorDetails.LastName</h5>
+	<h6 class="col-12 row">Ph: @AuthorDetails.Phone</h6>
+	<h6 class="col-12 row">CIty: @AuthorDetails.City</h6>
+</div>
+
+<div class="col-12 row ">@authorService.GetCreatedDate()</div>
+<div class="col-12 row">Version: @authorService.GetVersion()</div>
+
 <p>@AuthorId J.K.Rowling/Harry Potter</p>
 
 
 @code {
-    [Parameter]
-    public string AuthorId { get; set; }
+	[Parameter]
+	public string AuthorId { get; set; }
 
-}
+	public Author AuthorDetails { get; set; }
+
+	//public AuthorService authorService{ get; set; }
+
+	protected override void OnInitialized()
+	{
+		// authorService = new AuthorService();
+
+		AuthorDetails = authorService.GetAuthorById(Convert.ToInt32(AuthorId));
+	}
+ }
