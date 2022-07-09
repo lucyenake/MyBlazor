@@ -38,5 +38,10 @@ namespace BlazorApp.Data
         {
             return "V1";
         }
+
+        public void SaveAuthor(Author inAuthor)
+        {
+            Authors.Add(inAuthor);
+        }
     }
 }

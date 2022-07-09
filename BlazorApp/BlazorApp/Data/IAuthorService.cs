@@ -9,6 +9,7 @@ namespace BlazorApp.Data
         DateTime CreationDate { get; set; }
         Author GetAuthorById(int authorId);
         List<Author> GetAuthors();
+        void SaveAuthor(Author inAuthor);
         DateTime GetCreatedDate();
         string GetVersion();
     }
