@@ -20,7 +20,7 @@ namespace BlazorApp.Data
         [EmailAddress]
         public string EmailAddress { get; set; }
 
-        [Range(10000, 99999999, ErrorMessage = "Salary can not be less than 10000")]
+        //[Range(10000, 99999999, ErrorMessage = "Salary can not be less than 10000")]
         public int Salary { get; set; }
 
         public string Phone { get; set; }
